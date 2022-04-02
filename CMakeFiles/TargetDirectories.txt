@@ -1,0 +1,3 @@
+C:/Users/AliSalaxov/source/repos/TransportSystem/CMakeFiles/ALL_BUILD.dir
+C:/Users/AliSalaxov/source/repos/TransportSystem/CMakeFiles/ZERO_CHECK.dir
+C:/Users/AliSalaxov/source/repos/TransportSystem/TransportSystem/CMakeFiles/TransportSystem.dir

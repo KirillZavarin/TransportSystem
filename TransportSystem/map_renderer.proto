@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+import "svg.proto";
+
+package map_renderer_serialize;
+
+message MapSize {
+	double width_ = 1;
+	double height_ = 2;
+	double padding_ = 3;
+}
+
+message BusLabel {
+	int32 bus_label_font_size_ = 1;
+	repeated double bus_label_offset_ = 2;
+}
+
+message StopLabel {
+	int32 stop_label_font_size_ = 1;
+	repeated double stop_label_offset_ = 2;
+}
+
+message ElementSize {
+	double line_width_ = 1;
+	double stop_radius_ = 2;
+}
+
+message MapSettings {
+    MapSize size_ = 1;
+    ElementSize element_size_ = 2;
+    BusLabel bus_label_ = 3;
+    StopLabel stop_label_ = 4;
+    svg_serialize.Color underlayer_color_ = 5;
+    double underlayer_width_ = 6;
+    repeated svg_serialize.Color color_palette_ = 7;
+}

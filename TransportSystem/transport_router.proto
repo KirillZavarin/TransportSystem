@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package router_serialize;
+
+message RoutingSettings {
+	uint32 bus_wait_time_ = 1;
+	uint32 bus_velocity_ = 2;
+}
+
+message VertexId {
+	uint32 in = 1;
+	uint32 out = 2;
+}
+
+message Edge {
+	uint32 from = 1;
+	uint32 to = 2;
+	double weight = 3;
+}
+
+message IncidenceList {
+	repeated uint32 EdgeIds = 1;
+}
+
+message DirectedWeightedGraph {
+	repeated Edge edges_ = 1;
+	repeated IncidenceList incidence_lists_ = 2;
+}
+
+message MyUint32 {
+	uint32 data = 1;
+}
+
+message ComponentTrip {
+	bytes name = 1;
+	double weight_= 2;
+	MyUint32 span_count_ = 3;
+}
+
+message RouteInternalData {
+	bool is_initialisation = 3;
+    double weight = 1;
+    MyUint32 prev_edge = 2;
+}
+
+message RoutesInternalData {
+	repeated RouteInternalData data = 1;
+}
+
+message Router {
+	repeated RoutesInternalData routes_internal_data_ = 1;
+}
+
+message TransportRouter {
+	RoutingSettings settings_ = 1;
+	uint32 total_vertex_ = 2;
+	DirectedWeightedGraph graph_of_stops_ = 3;
+	Router router = 4;
+	map<uint32, VertexId> stop_vertexs_ = 5;
+	map<uint32, ComponentTrip> info_about_edge = 6;
+	repeated bytes stops = 7;
+}
